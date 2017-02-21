@@ -452,7 +452,10 @@ function execute_non_index_updates()
    local tnum = get_table_num()
 
    for i = 1, sysbench.opt.non_index_updates do
-      param[tnum].non_index_updates[1]:set(get_c_value())
+      param[tnum].non_index_updates[1]:set_rand_str("###########-###########-###########-" ..
+                               "###########-###########-###########-" ..
+                               "###########-###########-###########-" ..
+                               "###########")
       param[tnum].non_index_updates[2]:set(get_id())
 
       stmt[tnum].non_index_updates:execute()
@@ -470,8 +473,12 @@ function execute_delete_inserts()
 
       param[tnum].inserts[1]:set(id)
       param[tnum].inserts[2]:set(k)
-      param[tnum].inserts[3]:set(get_c_value())
-      param[tnum].inserts[4]:set(get_pad_value())
+      param[tnum].inserts[3]:set_rand_str("###########-###########-###########-" ..
+                               "###########-###########-###########-" ..
+                               "###########-###########-###########-" ..
+                                             "###########")
+      param[tnum].inserts[4]:set_rand_str("###########-###########-###########-" ..
+                               "###########-###########")
 
       stmt[tnum].deletes:execute()
       stmt[tnum].inserts:execute()
